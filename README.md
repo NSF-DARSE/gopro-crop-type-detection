@@ -2,7 +2,7 @@
 
 ## Overview
 Brief description of the problem and stakeholders.
-
+This project focuses on crop type detection and identification using ground level imagery captured with a GoPro camera. The imagery support agricultural montioring and crop mapping. 
 ## Repository Structure
 - `src/` – source code
 - `docs/` – optional documentation (Sphinx scaffold)
@@ -18,3 +18,6 @@ This repository includes an optional Sphinx documentation scaffold.
 
 ## Contributing
 All changes must go through pull requests.
+
+
+
