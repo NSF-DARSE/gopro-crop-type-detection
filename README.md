@@ -55,10 +55,10 @@ This project detects maize crops from GoPro camera footage collected across 8 Ni
 
 | Version | Images | Notes |
 |---------|--------|-------|
-| v15 | 850 | Original baseline dataset |
-| v18 | 1,038 | Null tiles removed |
-| v21 | 1,100 | Auto-annotated images added |
-| v24 | 1,366 | Final dataset — Maize class fixed, no resize |
+| v1 | 850 | Original baseline dataset |
+| v2 | 1,038 | Null tiles removed |
+| v3 | 1,100 | Auto-annotated images added |
+| v4 | 1,366 | Final dataset — Maize class fixed, no resize |
 
 ---
 
@@ -82,7 +82,7 @@ CBAM is applied after P3, P4, and P5 feature map stages to improve small object 
 | Model | imgsz | mAP50 | Precision | Recall | Detections |
 |-------|-------|-------|-----------|--------|------------|
 | YOLOv8l (baseline) | 640 | 0.508 | 0.502 | 0.497 | 106 |
-| YOLOv9s | 640 | 0.459 | 0.431 | 0.559 | — |
+| YOLOv9s | 640 | 0.459 | 0.431 | 0.559 | 101 |
 | YOLOv9m | 640 | 0.530 | 0.501 | 0.532 | 106 |
 | **YOLOv9m + CBAM (final)** | **640** | **0.561** | **0.498** | **0.625** | **873** |
 
