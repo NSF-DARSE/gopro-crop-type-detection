@@ -154,25 +154,42 @@ augmentations: mosaic=1.0, mixup=0.15, degrees=15, flipud=0.3
 ### Requirements
 
 ```bash
-pip install ultralytics roboflow folium pandas pillow pyproj openpyxl numpy==1.24.4
+pip install -r requirements.txt
 ```
 
 ### Google Colab (Recommended)
 
-All notebooks are designed to run on Google Colab with GPU runtime (A100 recommended).
+All notebooks are designed to run on Google Colab with GPU runtime.
 
-1. Open the notebook in Colab
-2. Enable GPU: `Runtime → Change runtime type → GPU`
-3. Add `ROBOFLOW_API_KEY` to Colab Secrets (🔑 icon in left sidebar)
-4. Run cells in order
+**Step 1 — Clone or open the notebook:**
+- Open `CODE.ipynb` directly in Google Colab
+
+**Step 2 — Enable GPU:**
+- `Runtime → Change runtime type → Hardware accelerator → GPU`
+- A100 recommended, T4 also works
+
+**Step 3 — Add Roboflow API key:**
+- Click the 🔑 Secrets icon in the left sidebar
+- Add secret: Name = `ROBOFLOW_API_KEY`, Value = your key
+- Get your key from [roboflow.com](https://roboflow.com) → Settings → API
+
+**Step 4 — Upload GPS CSV:**
+- Upload `coord2025_all.csv` to `/content/` in Colab
+- This file contains 1.6M GPS coordinates from the field survey
+
+**Step 5 — Run cells in order (Cell 1 → Cell 13):**
+- Set `switch_train = True` to train the model
+- After training, set `switch_train = False` and `switch_pred = True` to run inference
 
 ### Local Setup
 
 ```bash
-git clone https://github.com/nivaspanidapu/gopro-crop-type-detection.git
+git clone https://github.com/NSF-DARSE/gopro-crop-type-detection.git
 cd gopro-crop-type-detection
 pip install -r requirements.txt
 ```
+
+> **Note:** GPU is required for training. CPU-only inference is possible but slow.
 
 ---
 
@@ -192,8 +209,8 @@ model = YOLO('yolov9m.pt')
 model.train(
     data       = 'data.yaml',
     epochs     = 200,
-    imgsz      = 1280,
-    batch      = 4,
+    imgsz      = 640,
+    batch      = 16,
     optimizer  = 'AdamW',
     lr0        = 0.001,
     single_cls = True
