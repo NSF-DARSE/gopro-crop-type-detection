@@ -15,10 +15,12 @@ An end-to-end deep learning pipeline for detecting maize crops in GoPro field im
 - [Dataset](#dataset)
 - [Model Architecture](#model-architecture)
 - [Results](#results)
+- [Compute Resources & Performance](#compute-resources--performance)
 - [Setup & Installation](#setup--installation)
 - [Pipeline](#pipeline)
 - [GPS Coordinate Mapping](#gps-coordinate-mapping)
 - [Interactive Map](#interactive-map)
+- [Testing Strategy](#testing-strategy)
 - [Project Structure](#project-structure)
 - [Limitations](#limitations)
 - [License](#license)
@@ -257,6 +259,18 @@ The detection results are published as an interactive Folium map:
 - Marker size proportional to detection count
 - Popup with image name, state, plant count, confidence, and coordinates
 - MiniMap and fullscreen support
+
+---
+
+## Testing Strategy
+
+See [TESTING.md](TESTING.md) for the full testing strategy including:
+- Dataset split rationale (80/10/10)
+- Evaluation metrics and why recall was prioritized
+- Progressive model comparison across all runs
+- Confusion matrix analysis
+- Inference threshold tuning
+- Final detection results by state
 
 ---
 
