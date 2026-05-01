@@ -55,10 +55,10 @@ This project detects maize crops from GoPro camera footage collected across 8 Ni
 
 | Version | Images | Notes |
 |---------|--------|-------|
-| v1 | 850 | Original baseline dataset |
-| v2 | 1,038 | Null tiles removed |
-| v3 | 1,100 | Auto-annotated images added |
-| v4 | 1,366 | Final dataset — Maize class fixed, no resize |
+| v15 | 850 | Original baseline dataset |
+| v18 | 1,038 | Null tiles removed |
+| v21 | 1,100 | Auto-annotated images added |
+| v24 | 1,366 | Final dataset — Maize class fixed, no resize |
 
 ---
 
@@ -82,7 +82,7 @@ CBAM is applied after P3, P4, and P5 feature map stages to improve small object 
 | Model | imgsz | mAP50 | Precision | Recall | Detections |
 |-------|-------|-------|-----------|--------|------------|
 | YOLOv8l (baseline) | 640 | 0.508 | 0.502 | 0.497 | 106 |
-| YOLOv9s | 640 | 0.459 | 0.431 | 0.559 | 101 |
+| YOLOv9s | 640 | 0.459 | 0.431 | 0.559 | — |
 | YOLOv9m | 640 | 0.530 | 0.501 | 0.532 | 106 |
 | **YOLOv9m + CBAM (final)** | **640** | **0.561** | **0.498** | **0.625** | **873** |
 
@@ -111,6 +111,41 @@ imgsz:        640
 epochs:       170 (stopped at best epoch 130)
 augmentations: mosaic=1.0, mixup=0.15, degrees=15, flipud=0.3
 ```
+
+---
+
+## Compute Resources & Performance
+
+### Resources Used
+
+| Resource | Details |
+|---|---|
+| GPU | NVIDIA A100-SXM4-80GB |
+| VRAM Used | ~8.3 GB (of 80 GB) |
+| Platform | Google Colab Pro |
+| Training Time | ~2.4 hours (170 epochs) |
+| Inference Speed | 7.2ms per image |
+| Model Size | 41 MB (best.pt) |
+
+### Model Performance
+
+| Metric | Value |
+|---|---|
+| mAP50 | 0.561 |
+| mAP50-95 | 0.238 |
+| Precision | 0.498 |
+| Recall | 0.625 |
+| Best Epoch | 130 / 170 |
+
+### Detection Results
+
+| Metric | Value |
+|---|---|
+| Test Images | 136 |
+| Images with Detections | 128 |
+| Total Maize Plants Detected | 873 |
+| States Covered | 6 of 8 |
+| Avg Confidence | 0.457 |
 
 ---
 
