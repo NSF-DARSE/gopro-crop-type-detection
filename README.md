@@ -21,6 +21,7 @@ An end-to-end deep learning pipeline for detecting maize crops in GoPro field im
 - [GPS Coordinate Mapping](#gps-coordinate-mapping)
 - [Interactive Map](#interactive-map)
 - [Testing Strategy](#testing-strategy)
+- [Changelog](#changelog)
 - [Project Structure](#project-structure)
 - [Limitations](#limitations)
 - [License](#license)
@@ -246,6 +247,26 @@ gps_lookup = gps_df.drop_duplicates('IMG').set_index('IMG')[
 
 ---
 
+## GPS Coordinate Data
+
+GPS coordinates were collected during the 2025 Nigeria field survey across 8 states.
+
+| State | Entries |
+|-------|---------|
+| Benue | 323,176 |
+| Plateau | 292,856 |
+| Nasarawa | 262,332 |
+| Niger | 222,225 |
+| Ogun | 189,015 |
+| Oyo | 125,597 |
+| Kwara | 123,064 |
+| FCT | 74,572 |
+| **Total** | **1,612,837** |
+
+📥 A sample of 1,000 rows per state is available in [docs/coord2025_sample.xlsx](docs/coord2025_sample.xlsx)
+
+---
+
 ## Interactive Map
 
 The detection results are published as an interactive Folium map:
@@ -274,24 +295,47 @@ See [TESTING.md](TESTING.md) for the full testing strategy including:
 
 ---
 
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for the full version history.
+
+| Version | Date | Highlights |
+|---------|------|------------|
+| v1.0.0 | 2025-04-30 | Final release — YOLOv9m+CBAM, 873 detections |
+| v0.4.0 | 2025-04-25 | CBAM backbone, auto-annotation, dataset v24 |
+| v0.3.0 | 2025-04-20 | YOLOv9m, GPS CSV lookup, enhanced map |
+| v0.2.0 | 2025-04-10 | YOLOv8l baseline, Roboflow dataset |
+| v0.1.0 | 2025-03-15 | Initial setup, YOLOv8m baseline |
+
+---
+
 ## Project Structure
 
 ```
 gopro-crop-type-detection/
 │
-├── notebooks/
-│   ├── Maize_YOLOv9m_CBAM_v25_FINAL.ipynb   # Main training + inference notebook
-│   └── auto_annotate_v2.py                    # Auto-annotation script
+├── docs/
+│   ├── yolov9m_cbam.yaml        # CBAM model architecture config
+│   ├── coord2025_sample.xlsx    # Sample GPS coordinates (1,000 rows per state)
+│   └── best_detections.png      # Best detection visualization
 │
-├── configs/
-│   └── yolov9m_cbam.yaml                      # CBAM model config
-│
-├── index.html                                  # Interactive detection map
-├── maize_detections.xlsx                       # Detection results with GPS
-├── requirements.txt                            # Python dependencies
-├── LICENSE                                     # MIT License
-└── README.md
+├── .github/workflows/           # CI/CD workflows
+├── CodeFile.ipynb               # Main training + inference notebook
+├── CHANGELOG.md                 # Version history
+├── TESTING.md                   # Testing strategy documentation
+├── requirements.txt             # Python dependencies
+├── LICENSE                      # MIT License
+└── README.md                    # Project documentation
 ```
+
+### Additional Resources
+
+| Resource | Location |
+|----------|----------|
+| Full GPS coordinates (1.6M entries) | Available on request — too large for GitHub |
+| Trained model weights (bestcbam.pt) | [GitHub Release v1.0.0](https://github.com/NSF-DARSE/gopro-crop-type-detection/releases/tag/v1.0.0) |
+| Sample GPS data (8,000 rows) | [docs/coord2025_sample.xlsx](docs/coord2025_sample.xlsx) |
+| Live detection map | [GitHub Pages](https://nivaspanidapu.github.io/gopro-crop-type-detection/) |
 
 ---
 
