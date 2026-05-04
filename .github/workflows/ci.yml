@@ -43,4 +43,5 @@ jobs:
           if [ -f maize_detections.xlsx ]; then
             pytest tests/test_output.py -v
           else
-            echo "⚠️ maize_detect
+            echo "maize_detections.xlsx not found - skipping output tests"
+          fi
