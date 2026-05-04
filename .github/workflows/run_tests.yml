@@ -1,0 +1,59 @@
+name: Maize Detection Test Suite
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest openpyxl pyyaml pandas
+
+      - name: Fix file paths
+        run: |
+          # Rename coord sample if needed
+          if [ ! -f docs/coord2025_sample.xlsx ]; then
+            for f in docs/Coordinates_Sample.xlsx docs/Coordinates_sample.xlsx; do
+              if [ -f "$f" ]; then
+                cp "$f" docs/coord2025_sample.xlsx
+                echo "Renamed $f to docs/coord2025_sample.xlsx"
+              fi
+            done
+          fi
+
+      - name: Run test_pipeline.py (reproducibility & repo structure)
+        run: pytest tests/test_pipeline.py -v
+
+      - name: Run test_output.py (xlsx schema & GPS validation)
+        run: |
+          if [ -f maize_detections.xlsx ]; then
+            pytest tests/test_output.py -v
+          else
+            echo "⚠️  maize_detections.xlsx not in repo — skipping output tests"
+            echo "Upload maize_detections.xlsx to repo root to enable these tests"
+          fi
+
+      - name: Run test_model.py (model performance)
+        run: |
+          if [ -f bestcbam.pt ]; then
+            pip install ultralytics
+            pytest tests/test_model.py -v
+          else
+            echo "⚠️  bestcbam.pt not in repo — skipping model tests"
+            echo "Model weights are in GitHub Release v1.0.0"
+          fi
