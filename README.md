@@ -30,7 +30,7 @@ An end-to-end deep learning pipeline for detecting maize crops in GoPro field im
 
 ## Overview
 
-This project detects maize crops from GoPro camera footage collected across 8 Nigerian states as part of a field survey. The pipeline:
+This project detects crops from GoPro camera footage collected across 8 Nigerian states as part of a field survey. The pipeline:
 
 1. Trains a YOLOv9m + CBAM attention model on annotated GoPro imagery
 2. Runs inference on test images to detect maize plants
