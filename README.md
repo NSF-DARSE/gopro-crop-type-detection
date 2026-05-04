@@ -85,8 +85,8 @@ CBAM is applied after P3, P4, and P5 feature map stages to improve small object 
 | Model | imgsz | mAP50 | Precision | Recall | Detections |
 |-------|-------|-------|-----------|--------|------------|
 | YOLOv8l (baseline) | 640 | 0.508 | 0.502 | 0.497 | 106 |
-| YOLOv9s | 640 | 0.459 | 0.431 | 0.559 | — |
-| YOLOv9m | 640 | 0.530 | 0.501 | 0.532 | 106 |
+| YOLOv9s | 640 | 0.459 | 0.431 | 0.559 | 109 |
+| YOLOv9m | 640 | 0.530 | 0.501 | 0.532 | 452 |
 | **YOLOv9m + CBAM (final)** | **640** | **0.561** | **0.498** | **0.625** | **873** |
 
 ### Final Detection Results
