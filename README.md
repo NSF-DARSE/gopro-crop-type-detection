@@ -64,6 +64,7 @@ This project detects crops from GoPro camera footage collected across 8 Nigerian
 | v24 | 1,366 | Final dataset — Maize class fixed, no resize |
 
 ---
+---
 
 ## Model Architecture
 
