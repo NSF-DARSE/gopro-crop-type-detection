@@ -10,7 +10,7 @@ NIGERIA_LAT_MIN, NIGERIA_LAT_MAX = 4.0, 14.0
 NIGERIA_LON_MIN, NIGERIA_LON_MAX = 2.0, 15.0
 VALID_STATES = {"Plateau","Ogun","Niger","FCT","Nasarawa","Kwara","Oyo","Benue"}
 EXPECTED_DETECTIONS = 873
-EXPECTED_IMAGES = 128
+EXPECTED_IMAGES = 132
 CONF_THRESHOLD = 0.25
 
 @pytest.fixture(scope="module")
