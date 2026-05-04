@@ -11,7 +11,7 @@ import yaml
 import glob
 
 # ── Config ────────────────────────────────────────────────────────────────────
-DATA_YAML        = "data.yaml"
+DATA_YAML        = "docs/data.yaml"
 MODEL_YAML       = "docs/yolov9m_cbam.yaml"
 REQUIREMENTS_TXT = "requirements.txt"
 COORD_CSV        = "coord2025_all.csv"
