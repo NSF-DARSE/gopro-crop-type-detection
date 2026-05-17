@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 1
+names: ['Maize']
+
+roboflow:
+  workspace: chinoye
+  project: crop-detection-tigp8
+  version: 24
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/chinoye/crop-detection-tigp8/dataset/24
